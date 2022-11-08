@@ -13,6 +13,9 @@ export default function HomePage() {
       <main className='flex justify-center'>
         <section className='max-w-screen-xl'>
           <div className='flex flex-col'>
+            <div className='mt-8 mb-16 text-center text-4xl font-bold'>
+              Explore NFTs + Provide Insurance + Earn FTM
+            </div>
             <NftList></NftList>
           </div>
         </section>
