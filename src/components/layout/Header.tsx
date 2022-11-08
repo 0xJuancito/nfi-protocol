@@ -6,14 +6,14 @@ import NextImage from '@/components/NextImage';
 
 const links = [
   { href: '/', label: 'Explore' },
-  { href: '/', label: 'Provide Insurance' },
-  { href: '/', label: 'Ask for Insurance' },
+  // { href: '/', label: 'Provide Insurance' },
+  { href: '/', label: 'Insure' },
   { href: '/', label: 'My Policies' },
 ];
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-50 flex h-16 items-center bg-white'>
+    <header className='sticky top-0 z-50 flex h-16 items-center border-b border-b-zinc-100 bg-white'>
       <div className='layout flex h-14 max-w-screen-xl items-center justify-between'>
         <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
           <NextImage
