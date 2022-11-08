@@ -41,6 +41,7 @@ export default function NextImage({
       className={className}
     >
       <Image
+        unoptimized
         className={clsxm(
           imgClassName,
           status === 'loading' && clsxm('animate-pulse', blurClassName)
