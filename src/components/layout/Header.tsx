@@ -5,7 +5,7 @@ import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 
 const links = [
-  { href: '/', label: 'Explore' },
+  // { href: '/', label: 'Explore' },
   // { href: '/', label: 'Provide Insurance' },
   { href: '/insure', label: 'Insure' },
   { href: '/my-policies', label: 'My Policies' },
