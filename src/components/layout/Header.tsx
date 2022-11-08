@@ -7,8 +7,8 @@ import NextImage from '@/components/NextImage';
 const links = [
   { href: '/', label: 'Explore' },
   // { href: '/', label: 'Provide Insurance' },
-  { href: '/', label: 'Insure' },
-  { href: '/', label: 'My Policies' },
+  { href: '/insure', label: 'Insure' },
+  { href: '/my-policies', label: 'My Policies' },
 ];
 
 export default function Header() {
