@@ -15,9 +15,41 @@ export default function NftCard() {
         imgClassName='rounded-t-xl'
       ></NextImage>
       <div className='px-5 pt-4 pb-5'>
-        <div className='text-sm font-bold'>Azuki #6126</div>
-        <div className='mt-2 font-bold'>11.50 ETH</div>
-        <div className='text-sm text-zinc-500'>Ends in 2 days</div>
+        <div className='text-xl font-bold'>Magicats</div>
+        <div className='mt-2 border-b border-b-zinc-200 pb-4 text-sm font-bold'>
+          Floor Price: 100 FTM
+        </div>
+        <div className='mt-4 text-sm font-bold'>Compensation</div>
+        <div className='flex items-center gap-1 text-sm'>
+          {/* <NextImage
+            src='/fantom.png'
+            height='15'
+            width='15'
+            alt='Fantom'
+            className='inline'
+            imgClassName='rounded-full'
+          ></NextImage> */}
+          <span className='font-bold'>200 FMT</span>
+          <span> if floor price drops </span>
+          <span className='font-bold'>50%</span>
+        </div>
+        <div className='mt-4 text-sm text-zinc-500'>Ends in 2 days</div>
+        <div className='mt-4 border-t border-t-zinc-200 pt-4'>
+          {/* <div className='text-sm font-bold'>Earn</div> */}
+          <div className='flex gap-4 '>
+            <NextImage
+              src='/fantom.png'
+              height='30'
+              width='30'
+              alt='Fantom'
+              // className='rounded-full'
+              imgClassName='rounded-full'
+            ></NextImage>
+            <span className='flex items-center justify-center text-2xl font-bold'>
+              20 FTM
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );

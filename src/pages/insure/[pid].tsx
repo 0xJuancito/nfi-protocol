@@ -41,6 +41,18 @@ export default function HomePage() {
                   FTM
                 </div>
               </div>
+              {/* Compensation */}
+              <div className='mt-6 font-bold'>Compensation</div>
+              <div className='mt-2 flex'>
+                <input
+                  type='text'
+                  placeholder='Amount'
+                  className='tl-lg flex-1 rounded-tl-lg rounded-bl-lg border border-zinc-300 bg-white'
+                />
+                <div className='flex w-14 items-center justify-center rounded-tr-lg rounded-br-lg bg-zinc-200 px-4 font-bold'>
+                  FTM
+                </div>
+              </div>
               {/* Coverage */}
               <div className='mt-6 font-bold'>Floor Price Coverage</div>
               <div className='mt-2 flex'>
