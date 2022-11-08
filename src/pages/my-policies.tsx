@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
+import NftList from '@/components/NftList';
 import Seo from '@/components/Seo';
 
 export default function HomePage() {
@@ -11,7 +12,9 @@ export default function HomePage() {
 
       <main className='flex justify-center'>
         <section className='max-w-screen-xl'>
-          <div className='flex flex-col'>My Policies</div>
+          <div className='flex flex-col'>
+            <NftList></NftList>
+          </div>
         </section>
       </main>
     </Layout>

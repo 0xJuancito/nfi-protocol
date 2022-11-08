@@ -1,6 +1,8 @@
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 import * as React from 'react';
 
-import Button from '@/components/buttons/Button';
+import '@rainbow-me/rainbowkit/styles.css';
+
 import UnstyledLink from '@/components/links/UnstyledLink';
 import NextImage from '@/components/NextImage';
 
@@ -33,7 +35,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <Button variant='primary'>Connect Wallet</Button>
+          <ConnectButton />
         </nav>
       </div>
     </header>
