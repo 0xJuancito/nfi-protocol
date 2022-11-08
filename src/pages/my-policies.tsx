@@ -10,7 +10,7 @@ export default function HomePage() {
       <Seo />
 
       <main className='flex justify-center'>
-        <section className='max-w-screen-xl bg-zinc-50'>
+        <section className='max-w-screen-xl'>
           <div className='flex flex-col'>My Policies</div>
         </section>
       </main>
