@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { AppProps } from 'next/app';
 import { ReactNotifications } from 'react-notifications-component';
@@ -27,6 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     id: 250,
     name: 'Fantom',
     network: 'Fantom',
+    // @ts-ignore
     iconUrl: ['/fantom.png'],
     nativeCurrency: {
       name: 'Fantom',
@@ -43,6 +45,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     id: 56,
     name: 'BNB Smart Chain',
     network: 'BNB Smart Chain',
+    // @ts-ignore
     iconUrl: ['/bsc.png'],
     nativeCurrency: {
       name: 'BNB',
