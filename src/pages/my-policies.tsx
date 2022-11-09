@@ -16,34 +16,41 @@ export default function HomePage() {
             <div className='mt-8 mb-16 text-center text-4xl font-bold'>
               My Insurance Policies
             </div>
-            {/* <div className='mb-6 flex justify-center gap-10 border-b border-b-zinc-100 pb-6'>
-              <UnstyledLink
-                href=''
-                className='text-xl font-bold hover:text-gray-600'
-              >
-                INSURED NFTS
-              </UnstyledLink>
-              <UnstyledLink
-                href=''
-                className='text-xl font-bold hover:text-gray-600'
-              >
-                INSURANCE PROVIDED
-              </UnstyledLink>
-            </div> */}
             <div className='grid grid-cols-4 gap-4 rounded-xl'>
               <NftCard
                 listing={true}
                 imageUrl='https://ipfs.io/ipfs/QmVf4b2Ksev3CVbe8CNSxN5YwG2Mcgj8G9xhzX7wLn6esr'
                 name='Magicats'
                 tokenId={4100}
-                provide={true}
+                policy={true}
+                listed={true}
+              ></NftCard>
+              <NftCard
+                listing={true}
+                imageUrl='https://ipfs.io/ipfs/bafybeihoygqnspjf2nr5igc67a7ox7jldv35dfzzosvkpacfmkubpjazoi/306.png'
+                name="Punk'd Apes"
+                tokenId={306}
+                policy={true}
+                provided={true}
               ></NftCard>
               <NftCard
                 listing={true}
                 imageUrl='https://ipfs.io/ipfs/QmW5zR6f6GwJvVXFQzRu2tfHYqqXkLZ7eUfHdqqMGchM4S'
                 name='Magicats'
                 tokenId={687}
-                provide={true}
+                policy={true}
+                claimable={true}
+                provided={true}
+              ></NftCard>
+              <NftCard
+                listing={true}
+                imageUrl='https://ipfs.io/ipfs/bafybeibwcgbqs4meok7ldt2mbbcpiq4lziuape4ohmlldnb27uwpgnx6ne/306.png'
+                name="Binary Punk'd Apes"
+                tokenId={666}
+                policy={true}
+                claimable={true}
+                rugged={true}
+                current={5}
               ></NftCard>
             </div>
           </div>

@@ -12,6 +12,13 @@ type NftCardProps = {
   listing?: boolean;
   tokenId?: number;
   provide?: boolean;
+  claimable?: boolean;
+  policy?: boolean;
+  received?: boolean;
+  provided?: boolean;
+  listed?: boolean;
+  rugged?: boolean;
+  current?: number;
 };
 
 const cyrb53 = (str: string, seed = 0) => {
@@ -39,6 +46,13 @@ export default function NftCard({
   listing,
   tokenId = 0,
   provide = false,
+  claimable = false,
+  policy = false,
+  provided = false,
+  received = false,
+  listed = false,
+  rugged = false,
+  current,
 }: NftCardProps) {
   // Demo
   const seed = 1;
@@ -48,7 +62,7 @@ export default function NftCard({
   const floor = {
     initial: floorInitial,
     percentage: Math.round(percentage * 100),
-    current: Math.round(floorInitial * 1.1),
+    current: current ? current : Math.round(floorInitial * 1.1),
     limit: Math.round(floorInitial - percentage * floorInitial),
     compensation: Math.round(floorInitial * percentage),
     premium: Math.round((floorInitial * percentage) / 5),
@@ -85,22 +99,82 @@ export default function NftCard({
   });
 
   const provideInsurance = () => {
-    if (!provide) {
+    if (!provide && !claimable) {
       return;
     }
     signMessage();
   };
 
+  const getColorBg = () => {
+    if (rugged) {
+      return 'bg-red-100';
+    } else if (claimable) {
+      return 'bg-green-100';
+    } else {
+      return 'bg-white';
+    }
+  };
+
   return (
     <div
-      className='group flex-1 cursor-pointer rounded-xl bg-white shadow hover:shadow-xl'
+      className={`group flex-1 cursor-pointer rounded-xl shadow hover:shadow-xl ${getColorBg()}`}
       style={{ minWidth: '250px' }}
       onClick={() => provideInsurance()}
     >
+      {listed ? (
+        <div className='relative'>
+          <div className='absolute top-3 left-3 w-fit rounded-xl bg-blue-600 px-2 py-1 text-xs text-white'>
+            Listed
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
+      {provided && !claimable ? (
+        <div className='relative'>
+          <div className='absolute top-3 left-3 w-fit rounded-xl bg-cyan-700 px-2 py-1 text-xs text-white'>
+            Provided Insurance
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
+      {received ? (
+        <div className='relative'>
+          <div className='absolute top-3 left-3 w-fit rounded-xl bg-sky-700 px-2 py-1 text-xs text-white'>
+            Received
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
+      {claimable && !rugged ? (
+        <div className='relative'>
+          <div className='absolute top-3 left-3 w-fit rounded-xl bg-green-600 px-2 py-1 text-xs text-white'>
+            Claimable Compensation
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
+      {rugged ? (
+        <div className='relative'>
+          <div className='absolute top-3 left-3 w-fit rounded-xl bg-red-600 px-2 py-1 text-xs text-white'>
+            Rugged
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+
       {listing ? (
         <div className='relative'>
-          <div className='absolute top-3 right-3 w-fit rounded-xl bg-sky-700 px-2 py-1 text-xs text-white'>
-            {floor.days}d left
+          <div className='absolute top-3 right-3 w-fit rounded-xl  bg-sky-700 px-2 py-1 text-xs text-white'>
+            {claimable ? 'Finished' : `${floor.days}d left`}
           </div>
         </div>
       ) : (
@@ -141,22 +215,26 @@ export default function NftCard({
                   • Liquidation: {floor.limit} FTM
                 </div>
               </div>
-              <div className='border-t border-t-zinc-200 pt-4'>
-                {/* <div className='text-sm font-bold'>Earn</div> */}
-                <div className='flex gap-2 '>
-                  <NextImage
-                    src='/fantom.png'
-                    height='30'
-                    width='30'
-                    alt='Fantom'
-                    // className='rounded-full'
-                    imgClassName='rounded-full'
-                  ></NextImage>
-                  <span className='flex items-center justify-center text-2xl font-bold'>
-                    +{floor.premium} FTM
-                  </span>
+              {policy ? (
+                ''
+              ) : (
+                <div className='border-t border-t-zinc-200 pt-4'>
+                  {/* <div className='text-sm font-bold'>Earn</div> */}
+                  <div className='flex gap-2 '>
+                    <NextImage
+                      src='/fantom.png'
+                      height='30'
+                      width='30'
+                      alt='Fantom'
+                      // className='rounded-full'
+                      imgClassName='rounded-full'
+                    ></NextImage>
+                    <span className='flex items-center justify-center text-2xl font-bold'>
+                      +{floor.premium} FTM
+                    </span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           ) : (
             ''
@@ -170,6 +248,18 @@ export default function NftCard({
         >
           <div className='absolute w-full rounded-bl-xl rounded-br-xl bg-blue-500 px-2 py-5 text-center text-xl font-bold text-white'>
             Provide Insurance
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+      {claimable ? (
+        <div
+          className='relative hidden group-hover:block'
+          style={{ top: '-68px' }}
+        >
+          <div className='absolute w-full rounded-bl-xl rounded-br-xl bg-blue-500 px-2 py-5 text-center text-xl font-bold text-white'>
+            {rugged ? 'Claim Insurance' : 'Claim Compensation'}
           </div>
         </div>
       ) : (
