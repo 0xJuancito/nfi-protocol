@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import Layout from '@/components/layout/Layout';
-import UnstyledLink from '@/components/links/UnstyledLink';
 import NftCard from '@/components/NftCard';
 import Seo from '@/components/Seo';
 
@@ -14,7 +13,10 @@ export default function HomePage() {
       <main className='flex justify-center'>
         <section className='max-w-screen-xl'>
           <div className='flex flex-col'>
-            <div className='mb-6 flex justify-center gap-10 border-b border-b-zinc-100 pb-6'>
+            <div className='mt-8 mb-16 text-center text-4xl font-bold'>
+              My Insurance Policies
+            </div>
+            {/* <div className='mb-6 flex justify-center gap-10 border-b border-b-zinc-100 pb-6'>
               <UnstyledLink
                 href=''
                 className='text-xl font-bold hover:text-gray-600'
@@ -27,7 +29,7 @@ export default function HomePage() {
               >
                 INSURANCE PROVIDED
               </UnstyledLink>
-            </div>
+            </div> */}
             <div className='grid grid-cols-4 gap-4 rounded-xl'>
               <NftCard
                 listing={true}
