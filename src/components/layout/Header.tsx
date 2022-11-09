@@ -9,7 +9,7 @@ import NextImage from '@/components/NextImage';
 const links = [
   // { href: '/', label: 'Explore' },
   // { href: '/', label: 'Provide Insurance' },
-  { href: '/insure', label: 'Insure' },
+  { href: '/insurance', label: 'Insurance' },
   { href: '/my-policies', label: 'My Policies' },
 ];
 
