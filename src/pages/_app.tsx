@@ -7,7 +7,6 @@ import {
   createClient,
   WagmiConfig,
 } from 'wagmi';
-import { InjectedConnector } from 'wagmi/connectors/injected';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
@@ -38,13 +37,12 @@ function MyApp({ Component, pageProps }: AppProps) {
     // rpcUrls: ['https://rpc.ftm.tools'],
   };
 
-  const connector = new InjectedConnector({
-    chains: [fantomOpera],
-  });
-
   const { chains, provider } = configureChains(
     [fantomOpera, chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
-    [alchemyProvider({ apiKey: process.env.ALCHEMY_ID }), publicProvider()]
+    [
+      alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
+      publicProvider(),
+    ]
   );
 
   const { connectors } = getDefaultWallets({
