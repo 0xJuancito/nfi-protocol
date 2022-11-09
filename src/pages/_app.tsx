@@ -37,8 +37,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     // rpcUrls: ['https://rpc.ftm.tools'],
   };
 
+  const bsc: Chain = {
+    id: 56,
+    name: 'BNB Smart Chain',
+    network: 'BNB Smart Chain',
+    iconUrl: ['/bsc.png'],
+    nativeCurrency: {
+      name: 'BNB',
+      symbol: 'BNB',
+      decimals: 18,
+    },
+    rpcUrls: {
+      default: 'https://bsc-dataseed.binance.org/',
+    },
+    // rpcUrls: ['https://rpc.ftm.tools'],
+  };
+
   const { chains, provider } = configureChains(
-    [fantomOpera, chain.mainnet, chain.polygon, chain.optimism, chain.arbitrum],
+    [fantomOpera, chain.polygon, bsc],
     [
       alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
       publicProvider(),
