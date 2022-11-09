@@ -93,7 +93,11 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
       !nft.name.toLowerCase().includes('creed') &&
       !nft.name.toLowerCase().includes('saudi') &&
       !nft.name.toLowerCase().includes('middle') &&
-      !nft.name.toLowerCase().includes('beast')
+      !nft.name.toLowerCase().includes('beast') &&
+      !nft.name.toLowerCase().includes('never') &&
+      !nft.name.toLowerCase().includes('omega') &&
+      !nft.name.toLowerCase().includes('dissolution') &&
+      !nft.name.toLowerCase().includes('gottle')
   );
 
   allNFTs.forEach((nft) => {
