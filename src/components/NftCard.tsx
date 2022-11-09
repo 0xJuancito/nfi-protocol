@@ -56,7 +56,14 @@ export default function NftCard({
 }: NftCardProps) {
   // Demo
   const seed = 1;
-  const floorInitial = (cyrb53(name, seed) % 1000) + 200;
+  let floorInitial = (cyrb53(name, seed) % 1000) + 200;
+  if (tokenId === 4100) {
+    floorInitial = 1200;
+  }
+  if (name === 'Magicats') {
+    current = 1200;
+  }
+
   const percentage = ((((cyrb53(name, seed) + tokenId) % 9) + 1) * 5) / 100;
 
   const floor = {

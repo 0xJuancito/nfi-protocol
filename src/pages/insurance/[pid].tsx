@@ -142,6 +142,7 @@ export default function HomePage() {
                   listing={true}
                   imageUrl={nft?.metadata?.image}
                   name={nft?.name}
+                  tokenId={4100}
                 ></NftCard>
               </div>
             </div>
