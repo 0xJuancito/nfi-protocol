@@ -35,7 +35,7 @@ export default function Header() {
               </li>
             ))}
           </ul>
-          <ConnectButton />
+          <ConnectButton showBalance={false} />
         </nav>
       </div>
     </header>

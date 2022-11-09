@@ -33,7 +33,7 @@ export default function HomePage() {
                 policy={true}
                 provided={true}
               ></NftCard>
-              <NftCard
+              {/* <NftCard
                 listing={true}
                 imageUrl='https://ipfs.io/ipfs/QmW5zR6f6GwJvVXFQzRu2tfHYqqXkLZ7eUfHdqqMGchM4S'
                 name='Magicats'
@@ -41,11 +41,11 @@ export default function HomePage() {
                 policy={true}
                 claimable={true}
                 provided={true}
-              ></NftCard>
+              ></NftCard> */}
               <NftCard
                 listing={true}
-                imageUrl='https://ipfs.io/ipfs/bafybeibwcgbqs4meok7ldt2mbbcpiq4lziuape4ohmlldnb27uwpgnx6ne/306.png'
-                name="Binary Punk'd Apes"
+                imageUrl='https://metadata-bi3.pages.dev/revoke.bar/nft.png?nft=all'
+                name='Warning'
                 tokenId={666}
                 policy={true}
                 claimable={true}

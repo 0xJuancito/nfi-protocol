@@ -76,16 +76,6 @@ export default function NftCard({
     days: ((cyrb53(name, seed) + tokenId) % 14) + 1,
   };
 
-  // Example
-  // const message = {
-  //   premium: 20,
-  //   premiumToken: 'FTM',
-  //   compensation: 100,
-  //   compensationToken: 'FTM',
-  //   floorPriceCoverage: '50',
-  //   durationFrom: 1667999121,
-  //   durationTo: 1668603921,
-  // };
   const { signMessage } = useSignMessage({
     message: JSON.stringify(floor, null, 2),
     onSuccess() {
