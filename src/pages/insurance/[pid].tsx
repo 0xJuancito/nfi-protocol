@@ -1,5 +1,6 @@
+import { useRouter } from 'next/router';
 import * as React from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -9,9 +10,24 @@ import Layout from '@/components/layout/Layout';
 import NftCard from '@/components/NftCard';
 import Seo from '@/components/Seo';
 
+import { Nft } from '@/pages/api/nfts/[address]';
+
 export default function HomePage() {
+  const [nft, setNft] = useState(null as unknown as Nft);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!router.query.pid) {
+      return;
+    }
+    const pid = router.query.pid;
+    fetch(`/api/nft/${pid}`).then(async (response) => {
+      setNft(await response.json()) as unknown as Nft;
+    });
+  }, [router.query.pid]);
 
   return (
     <Layout>
@@ -87,7 +103,11 @@ export default function HomePage() {
             <div className=''>
               <div className='w-96'>
                 <div className='mb-4 font-bold'>Preview</div>
-                <NftCard></NftCard>
+                <NftCard
+                  listing={true}
+                  imageUrl={nft?.metadata?.image}
+                  name={nft?.name}
+                ></NftCard>
               </div>
             </div>
           </div>

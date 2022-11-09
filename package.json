@@ -21,6 +21,7 @@
     "@rainbow-me/rainbowkit": "^0.7.4",
     "clsx": "^1.2.1",
     "ethers": "^5.7.2",
+    "moralis": "^2.7.1",
     "next": "^13.0.0",
     "react": "^18.2.0",
     "react-datepicker": "^4.8.0",
