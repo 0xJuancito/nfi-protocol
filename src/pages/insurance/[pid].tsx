@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import * as React from 'react';
 import { useEffect, useState } from 'react';
 import DatePicker from 'react-datepicker';
+import { Store } from 'react-notifications-component';
+import { useSignMessage } from 'wagmi';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -18,6 +20,35 @@ export default function HomePage() {
   const [startDate, endDate] = dateRange;
 
   const router = useRouter();
+
+  // Example
+  const message = {
+    premium: 20,
+    premiumToken: 'FTM',
+    compensation: 100,
+    compensationToken: 'FTM',
+    floorPriceCoverage: '50',
+    durationFrom: 1667999121,
+    durationTo: 1668603921,
+  };
+  const { signMessage } = useSignMessage({
+    message: JSON.stringify(message, null, 2),
+    onSuccess() {
+      Store.addNotification({
+        title: 'Listing was successful!',
+        message: 'Check it out on the main section',
+        type: 'success',
+        insert: 'bottom',
+        container: 'bottom-right',
+        animationIn: ['animate__animated', 'animate__fadeIn'],
+        animationOut: ['animate__animated', 'animate__fadeOut'],
+        dismiss: {
+          duration: 5000,
+          onScreen: true,
+        },
+      });
+    },
+  });
 
   useEffect(() => {
     if (!router.query.pid) {
@@ -95,7 +126,11 @@ export default function HomePage() {
               />
               {/* Button */}
               <div>
-                <Button variant='primary' className='mt-6'>
+                <Button
+                  variant='primary'
+                  className='mt-6'
+                  onClick={() => signMessage()}
+                >
                   Complete Listing
                 </Button>
               </div>

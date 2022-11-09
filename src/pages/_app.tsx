@@ -1,5 +1,6 @@
 import { getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import { AppProps } from 'next/app';
+import { ReactNotifications } from 'react-notifications-component';
 import {
   Chain,
   chain,
@@ -10,6 +11,7 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 
+import 'react-notifications-component/dist/theme.css';
 import '@/styles/globals.css';
 // !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
 import '@/styles/colors.css';
@@ -75,6 +77,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains}>
+        <ReactNotifications />
         <Component {...pageProps} />
       </RainbowKitProvider>
     </WagmiConfig>

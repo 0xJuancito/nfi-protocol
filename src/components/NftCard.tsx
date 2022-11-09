@@ -39,7 +39,7 @@ export default function NftCard({ imageUrl, name, listing }: NftCardProps) {
               <div className='border-b border-b-zinc-200 pb-4'>
                 <div className='mt-4 mb-1 text-sm font-bold'>Compensation</div>
                 <div className='flex items-center gap-1 text-xs'>
-                  <span className='font-bold'>200 FMT</span>
+                  <span className='font-bold'>100 FMT</span>
                   <span> if floor price drops </span>
                   <span className='font-bold'>50%</span>
                 </div>

@@ -27,6 +27,7 @@
     "react-datepicker": "^4.8.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
+    "react-notifications-component": "^4.0.1",
     "tailwind-merge": "^1.7.0",
     "wagmi": "^0.7.13"
   },
