@@ -74,7 +74,7 @@ export default function HomePage() {
               </div>
               <div className='flex justify-between rounded-lg border border-zinc-300 p-4'>
                 <div>Floor Price</div>
-                <div className='font-bold'>200 FTM</div>
+                <div className='font-bold'>1200 FTM</div>
               </div>
               {/* Premium */}
               <div className='mt-6 font-bold'>Premium</div>

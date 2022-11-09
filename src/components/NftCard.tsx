@@ -69,8 +69,8 @@ export default function NftCard({
     message: JSON.stringify(floor, null, 2),
     onSuccess() {
       Store.addNotification({
-        title: 'Listing was successful!',
-        message: 'Check it out on the main section',
+        title: 'Insurance was provided!',
+        message: 'Check it out on My Policies section',
         type: 'success',
         insert: 'bottom',
         container: 'bottom-right',
