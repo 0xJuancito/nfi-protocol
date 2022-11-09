@@ -15,7 +15,7 @@ export default function NftCard({ imageUrl, name, listing }: NftCardProps) {
       {listing ? (
         <div className='relative'>
           <div className='absolute top-3 right-3 w-fit rounded-xl bg-sky-700 px-2 py-1 text-xs text-white'>
-            2d left
+            7d left
           </div>
         </div>
       ) : (
@@ -46,9 +46,9 @@ export default function NftCard({ imageUrl, name, listing }: NftCardProps) {
               </div>
               <div>
                 <div className='mt-3 text-sm font-bold'>Floor Price</div>
-                <div className='mt-1 text-xs font-bold'>• Initial: 100 FTM</div>
-                <div className='text-xs font-bold'>• Current: 110 FTM</div>
-                <div className='pb-4 text-xs font-bold'>• Limit: 90 FTM</div>
+                <div className='mt-1 text-xs font-bold'>• Initial: 200 FTM</div>
+                <div className='text-xs font-bold'>• Current: 210 FTM</div>
+                <div className='pb-4 text-xs font-bold'>• Limit: 100 FTM</div>
               </div>
               <div className='border-t border-t-zinc-200 pt-4'>
                 {/* <div className='text-sm font-bold'>Earn</div> */}
