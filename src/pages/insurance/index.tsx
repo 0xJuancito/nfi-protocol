@@ -13,11 +13,15 @@ export default function HomePage() {
   const [nfts, setNfts] = useState([] as Nft[]);
   const [loaded, setLoaded] = useState(false);
 
+  let loadedFirstTime = false;
+
   useEffect(() => {
-    if (loaded) {
+    if (loaded || loadedFirstTime) {
       return;
     }
     setLoaded(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    loadedFirstTime = true;
     // 0x984c5d268b220784e87fbe8edbb5c6b9f7ba9fc4
     // 0x5c8a4fd1689b22cc7909227c0a664a06683ef0a8
     const address = '0x5c8a4fd1689b22cc7909227c0a664a06683ef0a8';
@@ -26,7 +30,7 @@ export default function HomePage() {
       setNfts(all);
       setAllNfts(all);
     });
-  }, []);
+  }, [loaded]);
 
   const filterNfts = (chain = '') => {
     // Fantom - 0xfa
