@@ -54,7 +54,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   const { chains, provider } = configureChains(
-    [fantomOpera, chain.polygon, bsc],
+    [fantomOpera, chain.polygon, bsc, chain.mainnet],
     [
       alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID }),
       publicProvider(),
