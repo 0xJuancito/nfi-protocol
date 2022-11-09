@@ -3,8 +3,8 @@ import { useRouter } from 'next/router';
 
 // !STARTERCONF Change these default meta
 const defaultMeta = {
-  title: 'NFI - Non Fungible Insurance',
-  siteName: 'NFI - Non Fungible Insurance',
+  title: 'NFI - Non-Fungible Insurance',
+  siteName: 'NFI - Non-Fungible Insurance',
   description: 'P2P Insurance for NFTs',
   /** Without additional '/' on the end, e.g. https://theodorusclarence.com */
   url: 'https://tsnext-tw.thcl.dev',
