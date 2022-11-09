@@ -11,7 +11,9 @@ export default function HomePage() {
   const [nfts, setNfts] = useState([] as Nft[]);
 
   useEffect(() => {
-    const address = '0x84e9c589aa227d67e1d42ca02c2641504e951fd3';
+    // 0x984c5d268b220784e87fbe8edbb5c6b9f7ba9fc4
+    // 0x5c8a4fd1689b22cc7909227c0a664a06683ef0a8
+    const address = '0x5c8a4fd1689b22cc7909227c0a664a06683ef0a8';
     fetch(`/api/nfts/${address}`).then(async (response) => {
       setNfts(await response.json()) as unknown as Nft[];
     });

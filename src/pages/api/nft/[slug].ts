@@ -31,13 +31,16 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
     tokenId,
   });
 
-  const nft = (response?.result as unknown as Nft) || null;
+  const nft =
+    (JSON.parse(JSON.stringify(response?.result)) as unknown as Nft) || null;
 
-  if (nft?.metadata?.image?.startsWith('ipfs://')) {
+  if (nft.metadata?.image?.startsWith('ipfs://')) {
     nft.metadata.image = nft.metadata.image.replace(
       'ipfs://',
       'https://ipfs.io/ipfs/'
     );
+  } else if (nft.metadata?.image && nft.chain.toLowerCase() === '0xfa') {
+    // nft.metadata.image = `https://media-nft.paintswap.finance/250_${nft.tokenAddress}_${nft.tokenId}.jpg`;
   }
 
   res.status(200).json(nft);

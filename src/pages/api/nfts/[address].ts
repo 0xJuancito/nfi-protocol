@@ -61,8 +61,17 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
       chain,
     });
 
-    allNFTs = allNFTs.concat(response.result as unknown as Nft[]);
+    allNFTs = allNFTs.concat(
+      JSON.parse(JSON.stringify(response.result)) as unknown as Nft[]
+    );
   }
+
+  allNFTs = allNFTs.filter(
+    (nft) =>
+      nft.metadata?.image &&
+      nft.name &&
+      !nft.name.toLowerCase().startsWith('8bitcats')
+  );
 
   allNFTs.forEach((nft) => {
     if (nft.metadata?.image?.startsWith('ipfs://')) {
@@ -70,10 +79,10 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
         'ipfs://',
         'https://ipfs.io/ipfs/'
       );
+    } else if (nft.metadata?.image && nft.chain.toLowerCase() === '0xfa') {
+      // nft.metadata.image = `https://media-nft.paintswap.finance/250_${nft.tokenAddress}_${nft.tokenId}.jpg`;
     }
   });
-
-  allNFTs = allNFTs.filter((nft) => nft.metadata?.image);
 
   res.status(200).json(allNFTs);
 }

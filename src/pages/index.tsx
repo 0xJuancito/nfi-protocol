@@ -1,12 +1,24 @@
 import * as React from 'react';
+import { useEffect, useState } from 'react';
 
 import Layout from '@/components/layout/Layout';
 import NftCard from '@/components/NftCard';
 import Seo from '@/components/Seo';
 
-const nfts = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+import { Nft } from '@/pages/api/nfts/[address]';
 
 export default function HomePage() {
+  const [nfts, setNfts] = useState([] as Nft[]);
+
+  useEffect(() => {
+    // 0x984c5d268b220784e87fbe8edbb5c6b9f7ba9fc4
+    // 0x5c8a4fd1689b22cc7909227c0a664a06683ef0a8
+    const address = '0x984c5d268b220784e87fbe8edbb5c6b9f7ba9fc4';
+    fetch(`/api/nfts/${address}`).then(async (response) => {
+      setNfts(await response.json()) as unknown as Nft[];
+    });
+  }, []);
+
   return (
     <Layout>
       {/* <Seo templateTitle='Home' /> */}
@@ -20,7 +32,14 @@ export default function HomePage() {
             </div>
             <div className='grid grid-cols-4 gap-4 rounded-xl'>
               {nfts.map((nft, index) => (
-                <NftCard key={index} listing={true}></NftCard>
+                <NftCard
+                  key={index}
+                  listing={true}
+                  imageUrl={nft.metadata?.image}
+                  name={nft.name}
+                  tokenId={parseInt(nft.tokenId)}
+                  provide={true}
+                ></NftCard>
               ))}
             </div>
           </div>
