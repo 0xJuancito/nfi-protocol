@@ -55,34 +55,32 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
   const chains = [EvmChain.FANTOM, EvmChain.BSC, EvmChain.POLYGON];
   // const chains = [EvmChain.FANTOM];
 
-  for (const chain of chains) {
-    const response = await Moralis.EvmApi.nft.getWalletNFTs({
+  const chainResponses = chains.map((chain) =>
+    Moralis.EvmApi.nft.getWalletNFTs({
       address,
       chain,
-    });
+    })
+  );
 
-    allNFTs = allNFTs.concat(
-      JSON.parse(JSON.stringify(response.result)) as unknown as Nft[]
-    );
-  }
-
-  const polygonResponse = await Moralis.EvmApi.nft.getWalletNFTs({
+  const polygonResponse = Moralis.EvmApi.nft.getWalletNFTs({
     address: `0xd6eFf8F07cAF3443A1178407d3de4129149D6eF6`,
     chain: EvmChain.POLYGON,
   });
 
-  allNFTs = allNFTs.concat(
-    JSON.parse(JSON.stringify(polygonResponse.result)) as unknown as Nft[]
-  );
-
-  const bscResponse = await Moralis.EvmApi.nft.getWalletNFTs({
+  const bscResponse = Moralis.EvmApi.nft.getWalletNFTs({
     address: `0x4bddc49f6a38b3686b2e4c788cb9219ce1f6d7b0`,
     chain: EvmChain.BSC,
   });
 
-  allNFTs = allNFTs.concat(
-    JSON.parse(JSON.stringify(bscResponse.result)) as unknown as Nft[]
+  const responses = await Promise.all(
+    chainResponses.concat([polygonResponse, bscResponse])
   );
+
+  responses.forEach((response) => {
+    allNFTs = allNFTs.concat(
+      JSON.parse(JSON.stringify(response.result)) as unknown as Nft[]
+    );
+  });
 
   allNFTs = allNFTs.filter(
     (nft) =>
