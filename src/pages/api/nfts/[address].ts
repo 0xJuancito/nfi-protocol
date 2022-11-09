@@ -52,8 +52,8 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
   // BSC - 0x38
   // Polygon - 0x89
 
-  // const chains = [EvmChain.FANTOM, EvmChain.BSC, EvmChain.POLYGON];
-  const chains = [EvmChain.FANTOM];
+  const chains = [EvmChain.FANTOM, EvmChain.BSC, EvmChain.POLYGON];
+  // const chains = [EvmChain.FANTOM];
 
   for (const chain of chains) {
     const response = await Moralis.EvmApi.nft.getWalletNFTs({
@@ -66,11 +66,34 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
     );
   }
 
+  const polygonResponse = await Moralis.EvmApi.nft.getWalletNFTs({
+    address: `0xd6eFf8F07cAF3443A1178407d3de4129149D6eF6`,
+    chain: EvmChain.POLYGON,
+  });
+
+  allNFTs = allNFTs.concat(
+    JSON.parse(JSON.stringify(polygonResponse.result)) as unknown as Nft[]
+  );
+
+  const bscResponse = await Moralis.EvmApi.nft.getWalletNFTs({
+    address: `0x4bddc49f6a38b3686b2e4c788cb9219ce1f6d7b0`,
+    chain: EvmChain.BSC,
+  });
+
+  allNFTs = allNFTs.concat(
+    JSON.parse(JSON.stringify(bscResponse.result)) as unknown as Nft[]
+  );
+
   allNFTs = allNFTs.filter(
     (nft) =>
       nft.metadata?.image &&
       nft.name &&
-      !nft.name.toLowerCase().startsWith('8bitcats')
+      !nft.name.toLowerCase().startsWith('8bitcats') &&
+      !nft.name.toLowerCase().startsWith('vefba') &&
+      !nft.name.toLowerCase().includes('creed') &&
+      !nft.name.toLowerCase().includes('saudi') &&
+      !nft.name.toLowerCase().includes('middle') &&
+      !nft.name.toLowerCase().includes('beast')
   );
 
   allNFTs.forEach((nft) => {

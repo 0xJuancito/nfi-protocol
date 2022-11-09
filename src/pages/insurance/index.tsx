@@ -2,12 +2,14 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 import Layout from '@/components/layout/Layout';
+import UnstyledLink from '@/components/links/UnstyledLink';
 import NftCard from '@/components/NftCard';
 import Seo from '@/components/Seo';
 
 import { Nft } from '@/pages/api/nfts/[address]';
 
 export default function HomePage() {
+  const [allNfts, setAllNfts] = useState([] as Nft[]);
   const [nfts, setNfts] = useState([] as Nft[]);
 
   useEffect(() => {
@@ -15,9 +17,24 @@ export default function HomePage() {
     // 0x5c8a4fd1689b22cc7909227c0a664a06683ef0a8
     const address = '0x5c8a4fd1689b22cc7909227c0a664a06683ef0a8';
     fetch(`/api/nfts/${address}`).then(async (response) => {
-      setNfts(await response.json()) as unknown as Nft[];
+      const all = (await response.json()) as unknown as Nft[];
+      setNfts(all);
+      setAllNfts(all);
     });
   }, []);
+
+  const filterNfts = (chain = '') => {
+    // Fantom - 0xfa
+    // BSC - 0x38
+    // Polygon - 0x89
+
+    if (!chain) {
+      setNfts(allNfts);
+      return;
+    }
+    const filtered = allNfts.filter((nft) => nft.chain === chain);
+    setNfts(filtered);
+  };
 
   return (
     <Layout>
@@ -27,8 +44,39 @@ export default function HomePage() {
       <main className='flex justify-center'>
         <section className='max-w-screen-xl'>
           <div className='flex flex-col'>
-            <div className='mb-6 text-2xl font-bold'>
+            <div className='mt-8 mb-16 text-center text-4xl font-bold'>
               Select an NFT to Insure
+            </div>
+
+            <div className='mb-6 flex justify-center gap-10 border-b border-b-zinc-100 pb-6'>
+              <UnstyledLink
+                href=''
+                className='text-xl font-bold hover:text-gray-600'
+                onClick={() => filterNfts()}
+              >
+                ALL
+              </UnstyledLink>
+              <UnstyledLink
+                href=''
+                className='text-xl font-bold hover:text-gray-600'
+                onClick={() => filterNfts('0xfa')}
+              >
+                FANTOM
+              </UnstyledLink>
+              <UnstyledLink
+                href=''
+                className='text-xl font-bold hover:text-gray-600'
+                onClick={() => filterNfts('0x89')}
+              >
+                POLYGON
+              </UnstyledLink>
+              <UnstyledLink
+                href=''
+                className='text-xl font-bold hover:text-gray-600'
+                onClick={() => filterNfts('0x38')}
+              >
+                BNB SMART CHAIN
+              </UnstyledLink>
             </div>
             <div className='grid grid-cols-4 gap-4 rounded-xl'>
               {nfts.map((nft, index) => (
