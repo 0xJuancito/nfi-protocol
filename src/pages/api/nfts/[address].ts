@@ -95,6 +95,7 @@ export default async function hello(req: NextApiRequest, res: NextApiResponse) {
       !nft.name.toLowerCase().includes('never') &&
       !nft.name.toLowerCase().includes('omega') &&
       !nft.name.toLowerCase().includes('dissolution') &&
+      !nft.name.toLowerCase().includes('screamo') &&
       !nft.name.toLowerCase().includes('gottle')
   );
 
